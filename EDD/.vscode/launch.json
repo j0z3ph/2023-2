@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch Principal",
+      "request": "launch",
+      "mainClass": "C2.Principal",
+      "projectName": "EDD_392f5aea"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/j0z3ph/Repos/2023-2/EDD/C2",
+      "program": "/Users/j0z3ph/Repos/2023-2/EDD/C2/build/Debug/outDebug"
+    }
+  ]
+}
