@@ -2,7 +2,7 @@
  * Principal.java
  * Mi primer programa en Java
  * @author Jose Luis Cruz (jlcruz@ipn.mx)
- * @date 2023-02-17
+ * date 2023-02-17
  * GPL v3
  */
 
