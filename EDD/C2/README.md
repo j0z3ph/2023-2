@@ -6,4 +6,4 @@ Ejemplo de `struct` y `union`. Es posible comparar ambas estructuras, haciendo e
 
 ## Java
 
-Ejemplo de un tipo de datos abstracto y como un variable de este tipo (objeto) se pasa por referencia en los parametros de una función.
+Ejemplo de un tipo de dato abstracto (clase) y como un variable de este tipo (objeto) se pasa por referencia en los parametros de una función.
