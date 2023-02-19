@@ -9,4 +9,5 @@ Códigos fuente de los programas desarrollados en mis cursos del semestre 2023-2
 - HC4. Herramientas Computacionales Grupo 4.
 - IntrProg. Introducción a la Programación.
 - Prog. Programación.
+- ADSO. Administración de Sistemas Operativos.
 - OyAC. Organización y Arquitectura de Computadoras.
