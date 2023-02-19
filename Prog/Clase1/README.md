@@ -9,7 +9,7 @@ javac Principal.java
 ```
 Lo cual generará el archivo **Principal.class**.
 ## Ejecución
-Para ejecutar el progra,a utilice
+Para ejecutar el programa utilice
 ```
 java Principal
 ```
