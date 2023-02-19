@@ -18,4 +18,4 @@ Para generar la documentación, utilice
 ```
 javadoc -d docs/ Principal.java
 ```
-Donde **docs/** es la ruta donde desea generar los archivos de la documentación, y **Principal.java* es el archivo de código fuente.
+Donde **docs/** es la ruta donde desea generar los archivos de la documentación, y **Principal.java** es el archivo de código fuente.
