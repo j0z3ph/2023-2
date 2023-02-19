@@ -14,7 +14,7 @@
 
 void funcion() {
     int* n = (int*)malloc(sizeof(int));
-    free(n);
+    //free(n);
 }
 
 int main(int argc, char const *argv[])
