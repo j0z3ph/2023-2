@@ -9,7 +9,7 @@ Para el manejo de entradas y salidas, se requiere la siguiente biblioteca de fun
 #include<stdio.h>
 ```
 
-Recuerde, el archivo de entrada es `stdin` y el de salida `stdout`.
+Recuerde, el archivo de entrada estándar es `stdin` (teclado) y el de salida `stdout` (pantalla).
 
 ## Entradas sin formato
 - `getc(stdin)` Obtiene un caracter del archivo especificado.
