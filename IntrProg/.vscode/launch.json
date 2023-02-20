@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/j0z3ph/Repos/2023-2/IntrProg",
-      "program": "/Users/j0z3ph/Repos/2023-2/IntrProg/build/Debug/outDebug"
+      "cwd": "/Users/j0z3ph/Repos/2023-2/IntrProg/C3",
+      "program": "/Users/j0z3ph/Repos/2023-2/IntrProg/C3/build/Debug/outDebug"
     }
   ]
 }
