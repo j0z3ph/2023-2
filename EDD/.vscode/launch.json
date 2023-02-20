@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Launch Principal",
       "request": "launch",
+      "mainClass": "Principal",
+      "projectName": "EDD_392f5aea"
+    },
+    {
+      "type": "java",
+      "name": "Launch Principal",
+      "request": "launch",
       "mainClass": "C2.Principal",
       "projectName": "EDD_392f5aea"
     },
@@ -13,8 +20,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/j0z3ph/Repos/2023-2/EDD/C2",
-      "program": "/Users/j0z3ph/Repos/2023-2/EDD/C2/build/Debug/outDebug"
+      "cwd": "/Users/j0z3ph/Repos/2023-2/EDD/C3/C",
+      "program": "/Users/j0z3ph/Repos/2023-2/EDD/C3/C/build/Debug/outDebug"
     }
   ]
 }
