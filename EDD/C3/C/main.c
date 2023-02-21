@@ -30,6 +30,7 @@ typedef struct Nodo
 typedef struct List
 {
     Nodo *head;
+    Nodo *tail;
 } List;
 
 Nodo *last(List *list)
@@ -52,12 +53,13 @@ void add(List *list, int val)
     {
         // Lista vacia
         list->head = nodo;
+        list->tail = nodo;
     }
     else
     { // Caso  2
         // Lista con al menos un elemento
-        Nodo *ultimo = last(list);
-        ultimo->next = nodo;
+        list->tail->next = nodo;
+        list->tail = list->tail->next;
     }
 }
 

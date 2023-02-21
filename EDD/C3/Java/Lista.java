@@ -1,5 +1,7 @@
 public class Lista {
     private Nodo head;
+    private Nodo tail;
+
     public Lista() {
         head = null;
     }
@@ -24,9 +26,11 @@ public class Lista {
     public void add(int value) {
         if(head == null) {
             head = new Nodo(value);
+            tail = head;
         } else {
-            Nodo last = last();
-            last.setNext(new Nodo(value));
+            //Nodo last = last();
+            tail.setNext(new Nodo(value));
+            tail = tail.getNext();
         }
     }
 }
