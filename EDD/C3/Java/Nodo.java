@@ -31,10 +31,18 @@ public class Nodo {
         return this.next;
     }
 
+    /**
+     * Asigna un valor al nodo
+     * @param val Valor del nodo
+     */
     public void setValue(int val) {
         this.value = val;
     }
 
+    /**
+     * Asigna un valor al siguiente nodo
+     * @param n Referencia del siguiente nodo
+     */
     public void setNext(Nodo n) {
         this.next = n;
     }
