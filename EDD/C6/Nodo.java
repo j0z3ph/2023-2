@@ -10,7 +10,7 @@
     private int valor;
     private Nodo izquierdo;
     private Nodo derecho;
-    private Nodo siguiente;
+    private Nodo padre;
 
     /**
      * Constructor de la clase
@@ -18,7 +18,7 @@
      */
     public Nodo(int valor) {
         this.valor = valor;
-        this.izquierdo = this.derecho = this.siguiente = null;
+        this.izquierdo = this.derecho = this.padre = null;
     }
 
     /**
@@ -45,6 +45,10 @@
         return derecho;
     }
 
+    public Nodo getPadre() {
+        return padre;
+    }
+
     /**
      * Asigna el nodo izquierdo
      * @param i Nodo
@@ -59,6 +63,14 @@
      */
     public void setNodoD(Nodo d) {
         derecho = d;
+    }
+
+    public void setPadre(Nodo p) {
+        padre = p;
+    }
+
+    public void setValor(int v) {
+        valor = v;
     }
 
  }

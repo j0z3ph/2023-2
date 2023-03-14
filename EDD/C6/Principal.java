@@ -3,13 +3,15 @@ public class Principal {
         ABB abb = new ABB();
 
         abb.insert(10);
-        abb.insert(5);
-        abb.insert(11);
-        abb.insert(3);
-        abb.insert(20);
-        abb.insert(7);
-        abb.insert(15);
-        abb.insert(1);
+        abb.insertI(5);
+        abb.insertI(11);
+        abb.insertI(3);
+        abb.insertI(20);
+        abb.insertI(7);
+        abb.insertI(15);
+        abb.insertI(1);
+
+        abb.delete(1);
         System.out.println("Holi");
     }
 }
