@@ -10,8 +10,14 @@ public class Principal {
         abb.insertI(7);
         abb.insertI(15);
         abb.insertI(1);
+        abb.insertI(10);
 
         abb.delete(1);
+        //abb.delete(20);
+        //abb.delete(10);
+        abb.inorden();
+        abb.preorden();
+        abb.posorden();
         System.out.println("Holi");
     }
 }

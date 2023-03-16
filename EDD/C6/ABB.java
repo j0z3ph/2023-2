@@ -61,7 +61,10 @@ public class ABB {
             Nodo padre = odin;
             boolean inserted = false;
             while (!inserted) {
-                if (nodo.getValor() < padre.getValor()) {
+                if (nodo.getValor() == padre.getValor()) {
+                    padre.setCantidad(padre.getCantidad() + 1);
+                    inserted = true;
+                } else if (nodo.getValor() < padre.getValor()) {
                     if (padre.getNodoI() == null) {
                         padre.setNodoI(nodo);
                         nodo.setPadre(padre);
@@ -98,7 +101,22 @@ public class ABB {
     public void delete(int valor) {
         Nodo nodo = find(valor);
         Nodo padre;
+        Nodo min;
         if (nodo != null) {
+            if (nodo.getCantidad() > 1) {
+                nodo.setCantidad(nodo.getCantidad() - 1);
+                return;
+            }
+            // Caso 3
+            if (nodo.getNodoD() != null && nodo.getNodoI() != null) {
+                min = nodo.getNodoD();
+                while (min.getNodoI() != null) {
+                    min = min.getNodoI();
+                }
+                nodo.setValor(min.getValor());
+                nodo = min;
+            }
+
             // Caso 1: Nodo hoja
             if (nodo.getNodoD() == null && nodo.getNodoI() == null) {
                 if (nodo.getPadre() == null) {
@@ -112,30 +130,74 @@ public class ABB {
                     }
                     nodo.setPadre(null);
                 }
-            } else if (nodo.getNodoD() == null || nodo.getNodoI() == null) {
-                if (nodo.getNodoI() != null) {
-                    if (nodo.getPadre() == null) {
-                        if (nodo.getNodoI() != null) {
-                            odin = nodo.getNodoI();
-                            nodo.setNodoI(null);
-                        } else {
-                            odin = nodo.getNodoD();
-                            nodo.setNodoD(null);
-                        }
-                    } else {
-                        padre = nodo.getPadre();
-                        if (padre.getNodoI() == nodo) {
-                            padre.setNodoI(nodo.getNodoI());
-                            padre.getNodoI().setPadre(padre);
-                        } else {
-                            padre.setNodoD(nodo.getNodoI());
-                            padre.getNodoD().setPadre(padre);
-                        }
+            } // Caso 2
+            else if (nodo.getNodoD() == null || nodo.getNodoI() == null) {
+                if (nodo.getPadre() == null) {
+                    if (nodo.getNodoI() != null) {
+                        odin = nodo.getNodoI();
                         nodo.setNodoI(null);
-                        nodo.setPadre(null);
+                    } else {
+                        odin = nodo.getNodoD();
+                        nodo.setNodoD(null);
                     }
+                } else {
+                    padre = nodo.getPadre();
+                    if (padre.getNodoI() == nodo) {
+                        padre.setNodoI(nodo.getNodoI() != null ? nodo.getNodoI() : nodo.getNodoD());
+                        padre.getNodoI().setPadre(padre);
+                    } else {
+                        padre.setNodoD(nodo.getNodoI() != null ? nodo.getNodoI() : nodo.getNodoD());
+                        padre.getNodoD().setPadre(padre);
+                    }
+                    nodo.setNodoI(null);
+                    nodo.setNodoD(null);
+                    nodo.setPadre(null);
                 }
+
             }
+        }
+    }
+
+    public void inorden() {
+        inorden(odin);
+        System.out.println();
+    }
+
+    public void inorden(Nodo nodo) {
+
+        if (nodo != null) {
+            inorden(nodo.getNodoI());
+            for (int cont = 1; cont <= nodo.getCantidad(); cont++)
+                System.out.print(nodo.getValor() + ", ");
+            inorden(nodo.getNodoD());
+        }
+    }
+
+    public void preorden() {
+        preorden(odin);
+        System.out.println();
+    }
+
+    public void preorden(Nodo nodo) {
+        if (nodo != null) {
+            for (int cont = 1; cont <= nodo.getCantidad(); cont++)
+                System.out.print(nodo.getValor() + ", ");
+            preorden(nodo.getNodoI());
+            preorden(nodo.getNodoD());
+        }
+    }
+
+    public void posorden() {
+        posorden(odin);
+        System.out.println();
+    }
+
+    public void posorden(Nodo nodo) {
+        if (nodo != null) {
+            posorden(nodo.getNodoI());
+            posorden(nodo.getNodoD());
+            for (int cont = 1; cont <= nodo.getCantidad(); cont++)
+                System.out.print(nodo.getValor() + ", ");
         }
     }
 }

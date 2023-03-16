@@ -8,6 +8,15 @@
 
  public final class Nodo {
     private int valor;
+    private int cantidad;
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     private Nodo izquierdo;
     private Nodo derecho;
     private Nodo padre;
@@ -18,6 +27,7 @@
      */
     public Nodo(int valor) {
         this.valor = valor;
+        this.cantidad = 1;
         this.izquierdo = this.derecho = this.padre = null;
     }
 
