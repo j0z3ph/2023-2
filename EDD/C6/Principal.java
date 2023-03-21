@@ -1,23 +1,45 @@
+import java.util.Arrays;
+import java.util.Random;
+
 public class Principal {
     public static void main(String[] args) {
+        final int MAX = 100000;
         ABB abb = new ABB();
+        int[] arr = new int[MAX];
+        Random rnd = new Random();
+        int lost;
+        boolean found1 = false, found2 = false;
+        long t1, t2, et1, et2;
+        
+        System.out.println("Generando...");
+        for (int i = 0; i < MAX; i++) {
+            //arr[i] = rnd.nextInt(MAX * 2) - MAX;
+            arr[i] = i;
+            abb.insertI(arr[i]);
+        }
 
-        abb.insert(10);
-        abb.insertI(5);
-        abb.insertI(11);
-        abb.insertI(3);
-        abb.insertI(20);
-        abb.insertI(7);
-        abb.insertI(15);
-        abb.insertI(1);
-        abb.insertI(10);
+        //System.out.println(Arrays.toString(arr));
+        //abb.inorden();
+        lost = rnd.nextInt(MAX * 2) - MAX;
 
-        abb.delete(1);
-        //abb.delete(20);
-        //abb.delete(10);
-        abb.inorden();
-        abb.preorden();
-        abb.posorden();
-        System.out.println("Holi");
+        System.out.println("Buscando...");
+        t1 = System.nanoTime();
+        for (int i = 0; i < MAX; i++) {
+            if(arr[i] == lost) {
+                found1 = true;
+                break;
+            }
+        }
+        t2 = System.nanoTime();
+        et1 = t2 - t1;
+
+        t1 = System.nanoTime();
+        found2 = abb.find(lost) == null ? false : true;
+        t2 = System.nanoTime();
+        et2 = t2 - t1;
+
+        System.out.println("Busqueda arreglo: " + et1*1E-6 + ", Resultado: " + found1);
+        System.out.println("Busqueda ABB: " + et2*1E-6 + ", Resultado: " + found2);
+
     }
 }

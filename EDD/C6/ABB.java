@@ -163,7 +163,7 @@ public class ABB {
         System.out.println();
     }
 
-    public void inorden(Nodo nodo) {
+    private void inorden(Nodo nodo) {
 
         if (nodo != null) {
             inorden(nodo.getNodoI());
@@ -178,7 +178,7 @@ public class ABB {
         System.out.println();
     }
 
-    public void preorden(Nodo nodo) {
+    private void preorden(Nodo nodo) {
         if (nodo != null) {
             for (int cont = 1; cont <= nodo.getCantidad(); cont++)
                 System.out.print(nodo.getValor() + ", ");
@@ -192,7 +192,7 @@ public class ABB {
         System.out.println();
     }
 
-    public void posorden(Nodo nodo) {
+    private void posorden(Nodo nodo) {
         if (nodo != null) {
             posorden(nodo.getNodoI());
             posorden(nodo.getNodoD());
