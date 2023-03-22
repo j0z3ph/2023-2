@@ -2,6 +2,10 @@ package clases;
 
 public class Empleado {
     private String nombre;
+    private int noEmpleado;
+    private String departamento;
+
+    
     public String getNombre() {
         return nombre;
     }
@@ -20,6 +24,5 @@ public class Empleado {
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-    private int noEmpleado;
-    private String departamento;
+    
 }
