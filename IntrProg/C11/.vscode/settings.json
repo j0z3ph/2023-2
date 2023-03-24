@@ -35,6 +35,12 @@
   ],
   "C_Cpp_Runner.useAddressSanitizer": false,
   "files.associations": {
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "chrono": "c",
+    "limits": "c",
+    "random": "c",
+    "ratio": "c",
+    "semaphore": "c",
+    "algorithm": "c"
   }
 }
