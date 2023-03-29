@@ -36,6 +36,7 @@ public class ArchivosB {
         FileOutputStream fos = new FileOutputStream(archivo);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
+        oos.writeInt(alumnos.size());
         for (Alumno alumno : alumnos) {
             oos.writeObject(alumno);
         }
@@ -47,10 +48,16 @@ public class ArchivosB {
         ObjectInputStream ois = new ObjectInputStream(fis);
 
         List<Alumno> nlista = new ArrayList<Alumno>();
-        for (int i = 0; i < 3; i++) {
+        int n = ois.readInt();
+        for (int i = 0; i < n; i++) {
             Alumno al = (Alumno)ois.readObject();
             nlista.add(al);
         }
+
+        ois.close();
+        fis.close();
+
+        nlista.size();
 
     }
 }
