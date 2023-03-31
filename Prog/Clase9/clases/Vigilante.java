@@ -1,6 +1,8 @@
 package clases;
 
-public class Vigilante {
+import java.io.Serializable;
+
+public class Vigilante implements Serializable{
     private String nombre;
     private Turno turno;
 
