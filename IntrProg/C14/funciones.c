@@ -55,6 +55,70 @@ int elMasGrande(int arr[], int n)
     return theBigOne;
 }
 
+int busquedaBinariaR(int arr[], int tamanio, int lost, int min, int max) {
+    if (min <= max) {
+        int med = ((max - min)/2) + min;
+        if(arr[med] == lost) {
+            return 1;
+        } else {
+            if(lost < arr[med]) {
+                max = med - 1;
+            } else {
+                min = med + 1;
+            }
+            return busquedaBinariaR(arr, tamanio, lost, min, max);
+        }
+    }
+    return 0;
+}
+
+
+int busquedaBinaria(int arr[], int tamanio, int lost) {
+    int min = 0;
+    int max = tamanio - 1;
+    int med = ((max - min)/2) + min;
+    if (min <= max) {
+        med = ((max - min)/2) + min;
+        if(arr[med] == lost) {
+            return 1;
+        } else {
+            if(lost < arr[med]) {
+                max = med - 1;
+            } else {
+                min = med + 1;
+            }
+            return busquedaBinariaR(arr, tamanio, lost, min, max);
+        }
+    }
+    return 0;
+}
+
+
+int cDigitos(int e) {
+    int d = e, m = 0;
+    static int cont = 0;
+    if(d > 0) {
+        d /= 10;
+        m %= 10;
+        cont++;
+        return cDigitos(d);
+    }
+    return cont;
+}
+
+int sDigitos(int e) {
+    int d = e, m = 0;
+    static int cont = 0;
+    if(d > 0) {
+        m = d % 10;
+        d /= 10;
+        cont+=m;
+        return sDigitos(d);
+    }
+    return cont;
+}
+
+
 void clearScreen()
 {
 #ifdef __WIN32__

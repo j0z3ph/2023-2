@@ -43,4 +43,30 @@ int elMasGrande(int arr[], int n);
  */
 void clearScreen();
 
+/**
+ * @brief Realiza una busqueda binaria de un numero
+ * 
+ * @param arr Arreglo ordenado
+ * @param tamanio Tamanio del arreglo
+ * @param lost Numero a buscar
+ * @return int 0 si no se encuentra. 1 si se encuentra.
+ */
+int busquedaBinaria(int arr[], int tamanio, int lost);
+
+/**
+ * @brief Cuenta los digitos de un numero
+ * 
+ * @param e Numero a contar digitos
+ * @return int El numero de digitos
+ */
+int cDigitos(int e);
+
+/**
+ * @brief Suma los digitos de un numero
+ * 
+ * @param e Numero a operar
+ * @return int Suma de los digitos
+ */
+int sDigitos(int e);
+
 #endif

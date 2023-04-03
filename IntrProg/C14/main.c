@@ -17,7 +17,9 @@
 int main()
 {
     int n = 0, res = 0, max = 10, arr[max];
+    int temp = 0;
     srand(time(NULL));
+    temp = rand() % 10;
     clearScreen();
     printf("Usuario, proporcione un entero mayor que 0: ");
     scanf("%i", &n);
@@ -29,12 +31,23 @@ int main()
     // Llenamos el arreglo
     for (int i = 0; i < max; i++)
     {
-        arr[i] = rand() % 100;
+        arr[i] = rand() % 10;
     }
 
     imprimeArreglo(arr, max);
 
     printf("\nEl elemento mas grande en el arreglo es: %i\n", elMasGrande(arr, max));
+
+    // Creamos un nuevo arreglo ordenado
+    for (int i = 0; i < max; i++)
+    {
+        arr[i] = temp + i;
+    }
+
+    printf("Resultado de la busqueda: %s\n",
+           (busquedaBinaria(arr, max, (rand() % 10)) == 1 ? "Encontrado" : "No encontrado"));
+
+    printf("El numero de digitos de 12952848 es: %i\n", sDigitos(12952848));
 
     return 0;
 }
