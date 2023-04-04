@@ -1,6 +1,6 @@
 public class Principal {
     public static void main(String[] args) throws Exception {
-        Grafo G = new Grafo();
+        Grafo2 G = new Grafo2();
 
         G.addVertice("a");
         G.addVertice("b");
