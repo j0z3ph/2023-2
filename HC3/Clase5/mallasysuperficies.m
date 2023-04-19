@@ -1,0 +1,11 @@
+x=-1:3;
+y=1:4;
+[X,Y] = meshgrid(x,y);
+Z=(X.*Y.^2)./(X.^2 + Y.^2);
+colormap([0,0.1,0;0,0.3,0;0,0.5,0;0,0.7,0;0,1,0]);
+subplot(1,2,1);
+mesh(X,Y,Z);
+title("Grafica de Malla");
+subplot(1,2,2);
+surf(X,Y,Z);
+title("Grafica de Superficie");
