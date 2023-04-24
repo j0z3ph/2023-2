@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/j0z3ph/Repos/2023-2/IntrProg/C19",
+      "program": "/Users/j0z3ph/Repos/2023-2/IntrProg/C19/build/Debug/outDebug"
+    }
+  ]
+}
