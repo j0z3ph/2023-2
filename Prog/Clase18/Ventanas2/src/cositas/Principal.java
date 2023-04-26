@@ -6,6 +6,8 @@ package cositas;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Random;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,9 +37,9 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mi Segunda Ventana");
         setAlwaysOnTop(true);
-        setResizable(false);
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("/Users/j0z3ph/Downloads/star.png")); // NOI18N
         jButton1.setText("Clickeame");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -52,17 +54,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(146, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -75,14 +77,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         
+        Random rnd = new Random();
         Point p = this.getMousePosition();
         System.out.println(p.x + ", " + p.y);
         Dimension d = this.getSize();
-        
-        
-        
-        
-        
+        Point p2 = new Point();
+        p2.setLocation(rnd.nextInt(0, d.width), rnd.nextInt(0, d.height));
+        JButton btn = (JButton)evt.getSource();
+        btn.setLocation(p2);
     }//GEN-LAST:event_jButton1MouseEntered
 
     /**
