@@ -4,12 +4,24 @@
  */
 package principal;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author j0z3ph
  */
 public class Ventana extends javax.swing.JFrame {
 
+    
+    private File archivo;
+    private JFileChooser fc;
+    
     /**
      * Creates new form Ventana
      */
@@ -28,6 +40,8 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaDeTexto = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -44,13 +58,26 @@ public class Ventana extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        areaDeTexto.setColumns(20);
+        areaDeTexto.setRows(5);
+        jScrollPane1.setViewportView(areaDeTexto);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
         jMenu1.setMnemonic('A');
         jMenu1.setText("Archivo");
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem2.setMnemonic('b');
         jMenuItem2.setText("Abrir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem4.setMnemonic('G');
         jMenuItem4.setText("Guardar");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +87,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem5.setMnemonic('c');
         jMenuItem5.setText("Guardar como...");
         jMenu1.add(jMenuItem5);
@@ -87,17 +115,6 @@ public class Ventana extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -108,6 +125,32 @@ public class Ventana extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
        System.exit(0);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        fc = new JFileChooser();
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setDialogTitle("Abrir");
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Archivos de texto (.txt)", "txt"));
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Documentos de word (.doc, .docx)", "doc", "docx"));
+        int resp = fc.showOpenDialog(this);
+        if(resp == JFileChooser.APPROVE_OPTION) {
+            archivo = fc.getSelectedFile();
+            StringBuilder sb = new StringBuilder();
+            
+            this.areaDeTexto.setText("");
+            try {
+                Scanner scan = new Scanner(archivo);
+                while(scan.hasNextLine()) {
+                    sb.append(scan.nextLine());
+                    sb.append(System.lineSeparator());
+                }
+                this.areaDeTexto.setText(sb.toString());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +188,7 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaDeTexto;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -155,6 +199,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
