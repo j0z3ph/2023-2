@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define N 10000000
+#define N 100000000
 #define true 1;
 #define false 0;
 
@@ -134,7 +134,9 @@ void merge(int arr[], int l, int m, int r)
     int n2 = r - m;
 
     // generar arreglos temporales
-    int arrL[n1], arrR[n2];
+    // int arrL[n1], arrR[n2];
+    int *arrL = (int *)malloc(sizeof(int) * n1);
+    int *arrR = (int *)malloc(sizeof(int) * n2);
     for (int i = 0; i < n1; i++)
     {
         arrL[i] = arr[l + i];
@@ -176,6 +178,9 @@ void merge(int arr[], int l, int m, int r)
         j++;
         l++;
     }
+
+    free(arrL);
+    free(arrR);
 }
 
 void mergeSort(int arr[], int l, int r)
@@ -190,9 +195,50 @@ void mergeSort(int arr[], int l, int r)
     }
 }
 
+void mergeSortI(int arr[], int l, int r)
+{
+    for (int m = 1; m <= r - l; m = 2 * m)
+    {
+        for (int i = l; i < r; i += 2 * m)
+        {
+            int nl = i;
+            int mid = i + m - 1;
+            int nr = ((i + 2 * m - 1) < r) ? (i + 2 * m - 1) : r;
+            if (mid <= nr)
+                merge(arr, nl, mid, nr);
+        }
+    }
+}
+
+void quickSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        int piv = arr[l];
+        int i = l + 1, j = l + 1;
+        int aux = 0;
+        for (; j <= r; j++)
+        {
+            if (arr[j] <= piv)
+            {
+                aux = arr[i];
+                arr[i] = arr[j];
+                arr[j] = aux;
+                i++;
+            }
+        }
+
+        arr[l] = arr[i - 1];
+        arr[i - 1] = piv;
+
+        quickSort(arr, l, i - 2);
+        quickSort(arr, i, r);
+    }
+}
+
 int main()
 {
-    int arr[N];
+    int *arr = (int *)malloc(sizeof(int) * N);
     clock_t ini, fin;
     double elapsed;
 
@@ -241,11 +287,30 @@ int main()
     // print(arr);
     printf("\nOrdenando...");
     ini = clock();
-    mergeSort(arr, 0, N - 1);
+    mergeSortI(arr, 0, N - 1);
     fin = clock();
     // print(arr);
     elapsed = (double)(fin - ini) / CLOCKS_PER_SEC;
+    printf("\nTiempo: %lf\n", elapsed); 
+
+
+    printf("\nGenerando...");
+    genera(arr, N);
+    //print(arr);
+    printf("\nOrdenando...");
+    ini = clock();
+    quickSort(arr, 0, N - 1);
+    fin = clock();
+    //print(arr);
+    elapsed = (double)(fin - ini) / CLOCKS_PER_SEC;
     printf("\nTiempo: %lf\n", elapsed);
 
+
+
+
+
+
+
+    free(arr);
     return 0;
 }
