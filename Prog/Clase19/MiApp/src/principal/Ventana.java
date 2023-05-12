@@ -6,6 +6,8 @@ package principal;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,6 +92,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem5.setMnemonic('c');
         jMenuItem5.setText("Guardar como...");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
         jMenu1.add(jSeparator1);
 
@@ -119,7 +126,16 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        if(archivo != null) {
+            try {
+                FileWriter fw = new FileWriter(archivo);
+                fw.write(areaDeTexto.getText());
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -151,6 +167,34 @@ public class Ventana extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        fc = new JFileChooser();
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setDialogTitle("Guardar como...");
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Archivos de texto (.txt)", "txt"));
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Documentos de word (.doc, .docx)", "doc", "docx"));
+        int resp = fc.showSaveDialog(this);
+        if(resp == JFileChooser.APPROVE_OPTION) {
+            archivo = fc.getSelectedFile();
+            if(!archivo.exists()) {
+                try {
+                    archivo.createNewFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            try {
+                FileWriter fw = new FileWriter(archivo);
+                fw.write(areaDeTexto.getText());
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
