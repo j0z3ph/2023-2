@@ -56,6 +56,7 @@ int main()
 
     while (resp != 'n')
     {
+        fflush(stdin);
         printf("Proporcione el Nombre: ");
         fgets((listaContactos + cont)->nombre, 20, stdin);
         arreglaCadena(listaContactos[cont].nombre);
@@ -76,15 +77,13 @@ int main()
         scanf("%i-%i-%i", &listaContactos[cont].fnacimiento.dia,
               &listaContactos[cont].fnacimiento.mes,
               &listaContactos[cont].fnacimiento.anio);
-        
+        getc(stdin);
         printf("Agregar otro?[s/n] ");
         resp = getc(stdin);
-        getc(stdin);
         if (resp != 'n')
         {
             cont++;
             listaContactos = (Contacto *)realloc(listaContactos, sizeof(Contacto) * (cont + 1));
-            resp = getc(stdin);
         }
     }
 
