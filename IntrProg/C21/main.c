@@ -53,10 +53,11 @@ int main()
     Contacto *listaContactos = (Contacto *)malloc(sizeof(Contacto));
     Entero cont = 0;
     char resp = 's';
+    char num[10];
 
     while (resp != 'n')
     {
-        fflush(stdin);
+
         printf("Proporcione el Nombre: ");
         fgets((listaContactos + cont)->nombre, 20, stdin);
         arreglaCadena(listaContactos[cont].nombre);
@@ -73,13 +74,19 @@ int main()
         fgets((listaContactos + cont)->telefono, 11, stdin);
         arreglaCadena(listaContactos[cont].telefono);
 
-        printf("Proporcione la fecha de nacimiento en formato dd-mm-aaaa: ");
-        scanf("%i-%i-%i", &listaContactos[cont].fnacimiento.dia,
-              &listaContactos[cont].fnacimiento.mes,
-              &listaContactos[cont].fnacimiento.anio);
-        getc(stdin);
+        printf("Proporcione el dia de nacimiento: ");
+        fgets(num,10, stdin);
+        listaContactos[cont].fnacimiento.dia = atoi(num);
+        printf("Proporcione el mes de nacimiento: ");
+        fgets(num,10, stdin);
+        listaContactos[cont].fnacimiento.mes = atoi(num);
+        printf("Proporcione el anio de nacimiento: ");
+        fgets(num,10, stdin);
+        listaContactos[cont].fnacimiento.anio = atoi(num);
+        
         printf("Agregar otro?[s/n] ");
         resp = getc(stdin);
+        fflush(stdin);
         if (resp != 'n')
         {
             cont++;
@@ -91,5 +98,7 @@ int main()
     {
         imprime(listaContactos[i]);
     }
+
+    free(listaContactos);
     return 0;
 }
