@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Lista {
     private Vigilante vigilante;
@@ -64,6 +66,18 @@ public class Lista {
         }
         }catch(Exception ex) {
             // NOTHING
+        }
+    }
+    
+    public List<Empleado> getListaEmpleados() {
+        return this.empleados;
+    }
+    public void agregarEmpleado(Empleado emp) {
+        this.empleados.add(emp);
+        try {
+            saveEmpleados();
+        } catch (IOException ex) {
+            Logger.getLogger(Lista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
